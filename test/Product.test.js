@@ -8,7 +8,7 @@ const { ObjectId } = mongoose.Types;
 dotenv.config();
 
 before(async function() {
-  this.timeout(10000); // Aumentar el timeout si la conexión es lenta
+  this.timeout(10000); // ojo Aumentar el timeout si la conexión es lenta
   await mongoose.connect(process.env.MONGO_TEST);
 });
 
@@ -34,7 +34,6 @@ describe('Testing Products Repository', () => {
         carru1: "http://example.com/product.jpg",
         carru2: "http://example.com/product.jpg",
         carru3: "http://example.com/product.jpg",
-        minimo: 100,
         availability: true,
         owner: new ObjectId('658c4da1d6c70ef243ca3549')
     };

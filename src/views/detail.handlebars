@@ -1,25 +1,15 @@
-<img src="https://danarquio.github.io/preentrega1diaz/static/media/Dragon.561ef1fd2e215fdac7e01d9795925577.svg" style="max-height: 200px;">
+<img src="/files/shoppingCart.jpg" style="max-block-size: 200px;">
 <hr>
 <div className="descproducto">
-    <img src="{{product.thumbnails}}" alt="">
-    <h2>{{product.title}}</h2>
-
-    <h4>{{product.category}}</h4>
+  <img src="{{product.thumbnails}}" alt="">
+    <h2>Nombre del producto : {{product.title}}</h2>
+    <h2>Precio: ${{product.price}}</h2>
+    <h2>Categoria: {{product.category}}</h2>
     </Link>
-    <hr />
-    <p>
-        En rebanadas, por trozo o la pieza entera de <strong>{{product.title}}</strong>.
-        <br />
-        <br />
-        {{product.description}}
-        <br />
-        <br />
-    </p>
-    <p className="indicacion">
-        <br />
-        VENTA MÍNIMA {{product.minimo}} gr x ${{product.price}}.
-    </p>
-    <hr />
+    
+    <p>Descripcion: {{product.description}}</p>
+    <p className="indicacion"></p>
+       
 
 </div>
 <hr>
