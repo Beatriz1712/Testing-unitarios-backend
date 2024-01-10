@@ -486,8 +486,3 @@ Tercera Entrega/
 
 
 
-## Capturas de Pantalla
-
-![Captura de Pantalla 1](/src/public/files/Capturadepantalla1.png)
-![Captura de Pantalla 2](/src/public/files/Capturadepantalla2.png)
-![Captura de Pantalla 3](/src/public/files/Capturadepantalla3.png)
