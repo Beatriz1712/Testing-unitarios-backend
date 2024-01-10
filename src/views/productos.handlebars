@@ -11,25 +11,21 @@
     
     {{#each products}}
     <div class="productos">
+        <form action="/api/carts/add-to-cart/{{_id}}" method="post">
+                <div class="infoCard">
+                    <div class="textosprod">
+                        <h2 class="productos__nombre">{{this.title}}</h2>
+                        <div>
+                            <h2 class="productos__precio">${{this.price}}</h2>
+                        </div>
+                        <input type="hidden" name="quantity" value="1"> <!-- Ajusta el valor según sea necesario -->
 
-        <img class="vuelta" src={{this.carru1}} alt={{this.title}} />
-        <div class="infoCard">
-
-            <div class="textosprod">
-
-                <h2 class="productos__nombre">{{this.title}}</h2>
-                <div>
-                    <h2 class="productos__precio">${{this.price}}</h2>
-                    <h4 class="productos__gramo">x {{this.minimo}}gramos</h4>
+                        <button type="submit" class="add-to-cart-btn">Agregar al carrito</button>
+                       <a href="/products/{{this._id}}">Ver detalles</a>
+                    </div>
                 </div>
-
-                <button class="add-to-cart-btn" data-product-id="{{this._id}}">Agregar al carrito</button>
-                <a href="/products/{{this._id}}">Ver detalles</a>
-                
-            </div>
-
-        </div>
-
+            </form>
+        
 
     </div>
     {{/each}}
