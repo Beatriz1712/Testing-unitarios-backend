@@ -15,14 +15,15 @@ const assert = Assert.strict
 
 describe("Testing Users DAO get method", ()=>{
     before(function(){
+        // acciones antes del contexto actual
         this.usersDao = new UserRepository()
     })
-
+    //no usar arrow function en it
     it("El Dao debe agregar a un usuario a la db", async function(){
         let mockUser = {
-            first_name: "Coder",
-            last_name: "House",
-            email: "coder@houses.com",
+            first_name: "Lima",
+            last_name: "Peru",
+            email: "lima@peru.com",
             age: 20,
             password: "123456",
             rol: "user"
@@ -44,13 +45,14 @@ describe("Testing Users DAO get method", ()=>{
     })
 
     it("El Dao debe obtener un usuario por correo electronico", async function(){
-        let email = "coder@houses.com"
+        let email = "lima@peru.com"
 
         const user = await this.usersDao.getUserByEmail(email)
         assert.strictEqual(typeof user, "object")
     })
 
     beforeEach(async function() {
+        // acciones antes de cada test (borra)
         if (mongoose.connection.collection.users) {
           await mongoose.connection.collection.users.drop();
         }

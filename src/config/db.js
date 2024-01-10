@@ -6,10 +6,11 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log('Conectado a la base de datos');
+     console.log("\u001b[1;35mConnection successful Database");
+    
   } catch (error) {
-    console.error('Error al intentar conectarse a la base de datos', error);
-  }
+     console.error("\u001b[1;31m Connection failed " + error, error); 
+      }
 };
 
 export default connectDB;
