@@ -1,3 +1,6 @@
+  # Test 
+  npm test
+
 openapi: 3.0.0
 info:
   title: Documentación API Completa
@@ -385,104 +388,5 @@ components:
           type: string
         rol:
           type: string
-
-
-## Estructura del Proyecto
-```
-Tercera Entrega/
-├── src/
-│   ├── config/
-│   │   ├── db.js
-│   │   ├── errores.js
-│   │   ├── middlewares.js
-│   │   ├── nodemailer.js
-│   │   ├── session.js
-│   │   ├── twilio.js
-│   │   └── passport.config.js
-│   ├── controllers/
-│   │   ├── Cartcontroller.js
-│   │   ├── Productcontroller.js
-│   │   ├── Usercontroller.js
-│   │   ├── CartManager.js
-│   │   ├── multer.js
-│   │   └── ProductManager.js
-│   ├── DAO/
-│   │   ├── classes/
-│   │   │   ├── CartDao.js
-│   │   │   ├── ProductDao.js
-│   │   │   └── UserDao.js
-│   │   ├── models/
-│   │   │   ├── CartModel.js
-│   │   │   ├── MessageModel.js
-│   │   │   ├── ProductModel.js
-│   │   │   ├── TicketModel.js
-│   │   │   └── UserModel.js
-│   ├── public/
-│   │   ├── css/
-│   │   ├── js/
-│   │   └── files/
-│   ├── router/
-│   │   ├── carts.routes.js
-│   │   ├── messages.routes.js
-│   │   ├── product.routes.js
-│   │   ├── upload.routes.js
-│   │   ├── user.routes.js
-│   │   └── views.routes.js
-│   ├── repositories/
-│   │   ├── CartRepository.json
-│   │   ├── ProductRepository.json
-│   │   └── UserRepository.js
-│   ├── views/
-│   │   ├──layaouts/
-│   │   ├── addProduct.handlebars
-│   │   ├── cart.handlebars
-│   │   ├── chat.handlebars
-│   │   ├── detail.handlebars
-│   │   ├── faker.handlebars
-│   │   ├── home.handlebars
-│   │   ├── login.handlebars
-│   │   ├── productos.handlebars
-│   │   ├── productAdded.handlebars
-│   │   ├── profile.handlebars
-│   │   └── register.handlebars
-│   ├── app.js
-│   ├── index.js
-│   └── utils.js
-├── .env
-├── .gitignore
-├── package-lock.json
-├── package.json
-└── README.md
-```
-
-
-
-## Tecnologías Utilizadas
-
-- **Node.js**: Entorno de ejecución de JavaScript del lado del servidor.
-- **Express.js**: Framework web para Node.js que permite construir aplicaciones web rápidas y robustas.
-- **MongoDB**: Base de datos NoSQL flexible y escalable.
-- **Mongoose**: Biblioteca de modelado de objetos MongoDB para Node.js.
-- **Handlebars**: Motor de plantillas para generar vistas dinámicas en el servidor.
-- **@handlebars/allow-prototype-access**: Proporciona acceso a los prototipos en Handlebars.
-- **Bcrypt**: Biblioteca para el hashing de contraseñas.
-- **Chance**: Generador de datos aleatorios para Node.js.
-- **Connect-Mongo**: Implementación de MongoDB para el almacenamiento de sesiones en Express.js.
-- **Cookie-Parser**: Middleware para analizar cookies en las solicitudes.
-- **Dotenv**: Módulo que carga variables de entorno desde un archivo .env.
-- **Express-Session**: Middleware para la gestión de sesiones en Express.js.
-- **JsonWebToken (JWT)**: Implementa el estándar JSON Web Tokens para la creación de tokens de acceso.
-- **Nodemailer**: Módulo para enviar correos electrónicos con Node.js.
-- **Nodemon**: Herramienta de desarrollo que reinicia automáticamente el servidor cuando se detectan cambios en los archivos.
-- **Passport**: Middleware de autenticación para Node.js.
-- **Passport-Github2**: Estrategia de autenticación de Passport usando GitHub.
-- **Passport-JWT**: Estrategia de autenticación de Passport usando JSON Web Tokens.
-- **Passport-Local**: Estrategia de autenticación de Passport usando un nombre de usuario y contraseña.
-- **Session-File-Store**: Almacenamiento de sesiones basado en archivos para Express.js.
-- **Swagger-JSDoc**: Genera documentación OpenAPI (Swagger) basada en comentarios JSDoc.
-- **Swagger-UI-Express**: Permite servir documentos Swagger y Swagger UI generados automáticamente.
-- **Twilio**: API para enviar SMS y realizar llamadas telefónicas.
-- **UUID**: Librería para la generación de identificadores únicos universales (UUID).
-
 
 
