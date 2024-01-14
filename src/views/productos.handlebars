@@ -2,16 +2,15 @@
 <hr>
 <a href="/chat"><h3>Ir al chat</h3></a>
 <a href="/profile"><h3>Ir a tu perfil de usuario</h3></a>
-<a href="/cart/6519628deea059c6ae6e8e6d"><h3>Ir al Carrito</h3></a>
+<a href="/cart"><h3>Ir al Carrito</h3></a>
 <a href="/"><h3>Volver al inicio</h3></a>
 <a href="/mockingproducts">Ir a Mocking de Productos ficticios</a>
 
-<h1>Productos</h1>
+<h1>PRODUCTOS</h1>
 <div class="shop">
-    
     {{#each products}}
-    <div class="productos">
-        <form action="/api/carts/add-to-cart/{{_id}}" method="post">
+        <div class="productos">
+            <form action="/api/carts/add-to-cart/{{_id}}" method="post">
                 <div class="infoCard">
                     <div class="textosprod">
                         <h2 class="productos__nombre">{{this.title}}</h2>
@@ -21,15 +20,16 @@
                         <input type="hidden" name="quantity" value="1"> <!-- Ajusta el valor según sea necesario -->
 
                         <button type="submit" class="add-to-cart-btn">Agregar al carrito</button>
-                        <a href="/products/{{this._id}}">Ver detalles</a>
+                       <a href="/products/{{this._id}}">Ver detalles</a>
                     </div>
                 </div>
-       </form>
-        
-
-    </div>
+            </form>
+        </div>
     {{/each}}
-
 </div>
+
+                
+
+   
 
 

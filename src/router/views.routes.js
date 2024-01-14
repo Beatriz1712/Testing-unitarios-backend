@@ -1,21 +1,20 @@
 import { Router } from "express";
+const router = Router();
+import CartRepository from "../repositories/CartRepository.js";
 import ProductManager from "../controllers/ProductManager.js"
 import CartManager from "../controllers/CartManager.js"
 import { isAdmin } from "../config/middlewares.js";
 import { getUsersAndView } from '../controllers/UserController.js';
 import ProductController from "../controllers/ProductController.js";
 
-
-const router = Router()
-
 const product = new ProductManager
 const cart = new CartManager
-
+const repocart = new CartRepository();
 //Pagina inicial
 router.get("/", (req, res)=> {
     res.render("home", {
-        title: "Dracarnis Home"
-    })
+      title: "Ecommerce App Backend",
+    });
 })
 
 
@@ -40,7 +39,7 @@ router.get("/products", async (req, res) => {
     let allProducts = await product.getProducts()
     allProducts = allProducts.map(product => product.toJSON())
     res.render("productos", {
-        title: "Dracarnis | Productos",
+        title: "Ecommerce App | Productos",
         products : allProducts
     })
 })
@@ -79,14 +78,52 @@ router.get("/products/:id", async (req, res) => {
 });
 
 //renderizado de productos en carrito
-router.get("/cart/:cid", async (req, res) => {
-    let id = req.params.cid;
-    let cartWithProducts = await cart.getCartWithProducts(id);
+
+router.get("/cart", async (req, res) => {
+  try {
+    // Verificar si el usuario no está autenticado
+    if (!req.isAuthenticated()) {
+      // Redirigir al usuario a la página de inicio de sesión
+      return res.redirect("/login");
+    }
+
+    console.log(req.user);
+    // Obtener el ID del usuario de la sesión
+    const userId = req.user._id;
+
+    // Verificar si se pudo obtener el ID del usuario
+    if (!userId) {
+      console.error("No se pudo obtener el ID del usuario");
+      return res.status(500).send("Error interno del servidor");
+    }
+
+    // Obtener el carrito del usuario por el ID
+    let userCart = await repocart.getCartById(userId);
+
+    // Verificar si se pudo obtener el carrito del usuario
+    if (!userCart || !userCart._id) {
+      console.error("No se pudo obtener el carrito del usuario");
+      return res.status(500).send("Error interno del servidor");
+    }
+
+    let cartId = userCart._id;
+    console.log("el id user:", userId);
+    console.log("el id cart:", cartId);
+
+    // Renderizar la plantilla con la información del carrito
     res.render("cart", {
-        title: "Vista Carro",
-        products: cartWithProducts.products, 
+      title: "Vista Carro",
+      cart: userCart,
+      cartId: cartId, // Pasar el carrito específico del usuario a la plantilla
+      message: "producto eliminado",
     });
+  } catch (error) {
+    console.error("Error al obtener el carrito:", error);
+    // Manejar el error, por ejemplo, mostrando un mensaje de error
+    res.status(500).send("Error interno del servidor");
+  }
 });
+
 
 //Login
 router.get("/login", async (req, res) => {
@@ -117,6 +154,7 @@ router.get("/register", async (req, res) => {
     isAdmin: req.user.rol === 'admin'
     });
   }); */
+  /**************** */
   router.get("/profile", isAuthenticated, async (req, res) => {
     if (!req.session.emailUsuario) {
       return res.redirect("/login");

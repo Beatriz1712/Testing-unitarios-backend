@@ -14,7 +14,6 @@ const productManager = new ProductManager()
   router.post('/add', isAdminOrPremium, ProductController.createProduct);
 
 
-
 //get
 router.get("/", async (req, res) => {
     try {

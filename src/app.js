@@ -14,6 +14,11 @@ import userRouter from './router/user.routes.js';
 import messagesRouter from "./router/messages.routes.js"
 import Chance from 'chance';
 
+import methodOverride from "method-override";
+//para aumentar los listeners
+import EventEmitter from "events";
+EventEmitter.defaultMaxListeners = 15;
+
 import swaggerJSDoc from 'swagger-jsdoc';
 import SwaggerUiExpress from 'swagger-ui-express';
 
@@ -27,7 +32,8 @@ dotenv.config();
 
 // Inicializar la aplicación de Express
 const app = express();
-
+app.use(methodOverride("_method"));
+//conf swagger
 const swaggerOptions = {
   definition:{
     openapi: "3.0.1",
@@ -71,6 +77,7 @@ app.use("/api/carts", cartsRouter)
 app.use("/api/prod", productsRouter)
 app.use("/api/user", userRouter)
 app.use("/api/msg", messagesRouter)
+app.use("/delete", cartsRouter);
 
 //handlebars
 app.engine('handlebars', engine({
@@ -80,7 +87,10 @@ app.engine('handlebars', engine({
 app.set("view engine", "handlebars")
 app.set("views", path.resolve(__dirname + "/views"))
 app.set("views", __dirname+"/views")
-
+// Asumiendo que Handlebars ya ha sido importado o requerido anteriormente
+Handlebars.registerHelper('json', function(context) {
+  return JSON.stringify(context);
+});
 
 
 const chance = new Chance()

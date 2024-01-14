@@ -1,5 +1,5 @@
 import { cartsModel } from "../DAO/models/carts.model.js";
-
+import mongoose from "mongoose";
 
 class CartManager {
     
